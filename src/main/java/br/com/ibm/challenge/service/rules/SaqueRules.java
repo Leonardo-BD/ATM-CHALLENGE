@@ -11,7 +11,7 @@ import static br.com.ibm.challenge.exception.GeneralException.returnFalseOrExcep
 
 public class SaqueRules {
 
-    public static boolean versaoApiValida(boolean throwException, short versaoApi) {
+    public static boolean versaoApiSacarContaCorrenteViaAtmValida(boolean throwException, short versaoApi) {
         if (versaoApi == 1) { //Adicionar mais condicionais conforme houverem novas versões.
             return true;
         } else {

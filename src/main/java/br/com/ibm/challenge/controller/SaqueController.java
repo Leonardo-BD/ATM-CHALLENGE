@@ -18,8 +18,8 @@ public class SaqueController {
     private static final String MSG_EXCEPTION = "Exception :: ";
 
     @ResponseBody
-    @PostMapping("/no-auth/v{versaoApi}/sessao")
-    public Saque criarSessaoDeVotacao(@PathVariable("versaoApi") short versaoApi, @RequestBody Saque saque, @RequestParam("valorSaque") double valorSaque) {
+    @PostMapping("/no-auth/v{versaoApi}/saque")
+    public Saque sacarContaCorrenteViaAtm(@PathVariable("versaoApi") short versaoApi, @RequestBody Saque saque, @RequestParam("valorSaque") double valorSaque) {
         try {
             return saqueService.sacarContaCorrenteViaAtm(versaoApi, saque, valorSaque);
         } catch (Exception e) {
