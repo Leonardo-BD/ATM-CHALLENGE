@@ -49,7 +49,7 @@ public class SaqueService implements ISaqueService {
             saque.setId(1);
         }
 
-        saqueRepository.save(saque);
+        saque = saqueRepository.save(saque);
 
         return saque;
     }

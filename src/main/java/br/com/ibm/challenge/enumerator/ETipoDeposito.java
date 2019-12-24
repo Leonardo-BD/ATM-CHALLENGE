@@ -1,7 +1,5 @@
 package br.com.ibm.challenge.enumerator;
 
-import br.com.ibm.challenge.domain.TipoDeposito;
-
 public enum ETipoDeposito {
 
     DINHEIRO    (1, "Dinheiro"),

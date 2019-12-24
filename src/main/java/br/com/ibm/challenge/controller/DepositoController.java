@@ -19,7 +19,7 @@ public class DepositoController {
     private static final String MSG_EXCEPTION = "Exception :: ";
 
     @ResponseBody
-    @PostMapping("/no-auth/v{versaoApi}/deposito")
+    @PostMapping("/v{versaoApi}/deposito")
     public Deposito efetuarDeposito(@PathVariable("versaoApi") short versaoApi, @RequestBody Deposito deposito, @RequestParam("valorDeposito") double valorDeposito) {
         try {
             return depositoService.efetuarDeposito(versaoApi, deposito, valorDeposito);

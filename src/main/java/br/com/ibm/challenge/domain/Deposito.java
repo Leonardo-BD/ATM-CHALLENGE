@@ -1,18 +1,22 @@
 package br.com.ibm.challenge.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
-
+@ApiModel
 public class Deposito {
 
     @Id
+    @ApiModelProperty(hidden = true)
     private long id;
 
     private long idContaCorrenteDeposito;
     private long idTipoDeposito;
     private BigDecimal valorDeposito;
 
+    @ApiModelProperty(hidden = true)
     private long dataOperacao;
 
     public Deposito() {

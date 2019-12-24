@@ -18,7 +18,7 @@ public class TransferenciaController {
     private static final String MSG_EXCEPTION = "Exception :: ";
 
     @ResponseBody
-    @PostMapping("/no-auth/v{versaoApi}/transferencia")
+    @PostMapping("/v{versaoApi}/transferencia")
     public Transferencia efetuarTransferencia(@PathVariable("versaoApi") short versaoApi, @RequestBody Transferencia transferencia, @RequestParam("valorTransferencia") double valorTransferencia) {
         try {
             return transferenciaService.efetuarTransferencia(versaoApi, transferencia, valorTransferencia);

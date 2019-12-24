@@ -18,7 +18,7 @@ public class SaqueController {
     private static final String MSG_EXCEPTION = "Exception :: ";
 
     @ResponseBody
-    @PostMapping("/no-auth/v{versaoApi}/saque")
+    @PostMapping("/v{versaoApi}/saque")
     public Saque sacarContaCorrenteViaAtm(@PathVariable("versaoApi") short versaoApi, @RequestBody Saque saque, @RequestParam("valorSaque") double valorSaque) {
         try {
             return saqueService.sacarContaCorrenteViaAtm(versaoApi, saque, valorSaque);

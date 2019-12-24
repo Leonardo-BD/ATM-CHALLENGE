@@ -23,16 +23,26 @@ public class MongoInit {
 
     @PostConstruct
     public void init() {
+        salvarContas();
+        salvarTerminais();
+    }
+
+    private void salvarContas() {
         ContaCorrente ultimaContaCorrente = contaCorrenteRepository.findTopByOrderByIdDesc().orElse(null);
-        long lastId = ultimaContaCorrente != null ? ultimaContaCorrente.getId() : 1;
+        long lastId = ultimaContaCorrente != null ? ultimaContaCorrente.getId() : 0;
 
         ContaCorrente contaCorrenteOrigem = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(lastId+1).build();
         ContaCorrente contaCorrenteDestino = new ContaCorrenteBuilder(2, "0050", "5670012", true).setSaldo(BigDecimal.valueOf(10000)).setId(lastId+2).build();
 
         contaCorrenteRepository.save(contaCorrenteOrigem);
         contaCorrenteRepository.save(contaCorrenteDestino);
+    }
 
-        TerminalAtm terminalAtm = new TerminalAtmBuilder("Rua B, 127 - Porto Alegre, RS", true).setCedulasReal(100, 100, 100, 100, 100, 100).setId(1).build();
+    private void salvarTerminais() {
+        TerminalAtm ultimoTerminal = terminalAtmRepository.findTopByOrderByIdDesc().orElse(null);
+        long lastId = ultimoTerminal != null ? ultimoTerminal.getId() : 0;
+
+        TerminalAtm terminalAtm = new TerminalAtmBuilder("Rua B, 127 - Porto Alegre, RS", true).setCedulasReal(100, 100, 100, 100, 100, 100).setId(lastId+1).build();
 
         terminalAtmRepository.save(terminalAtm);
     }

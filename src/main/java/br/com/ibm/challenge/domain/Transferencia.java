@@ -1,18 +1,23 @@
 package br.com.ibm.challenge.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
 
+@ApiModel
 public class Transferencia {
 
     @Id
+    @ApiModelProperty(hidden = true)
     private long id;
 
     private long idContaCorrenteOrigem;
     private long idContaCorrenteDestino;
     private BigDecimal valor;
 
+    @ApiModelProperty(hidden = true)
     private long dataOperacao;
 
     public Transferencia() {

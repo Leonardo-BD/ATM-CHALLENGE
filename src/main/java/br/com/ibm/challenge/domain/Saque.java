@@ -1,23 +1,38 @@
 package br.com.ibm.challenge.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
 
+@ApiModel
 public class Saque {
 
     @Id
+    @ApiModelProperty(hidden = true)
     private long id;
 
     private long idContaCorrente;
     private long idTerminalAtm;
     private BigDecimal valor;
 
+    @ApiModelProperty(hidden = true)
     private int cedulasReal_2;
+
+    @ApiModelProperty(hidden = true)
     private int cedulasReal_5;
+
+    @ApiModelProperty(hidden = true)
     private int cedulasReal_10;
+
+    @ApiModelProperty(hidden = true)
     private int cedulasReal_20;
+
+    @ApiModelProperty(hidden = true)
     private int cedulasReal_50;
+
+    @ApiModelProperty(hidden = true)
     private int cedulasReal_100;
 
     public Saque() {
