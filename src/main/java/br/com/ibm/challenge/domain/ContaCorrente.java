@@ -9,7 +9,6 @@ public class ContaCorrente {
     @Id
     private long id;
 
-    private long idPessoaTitular;
     private String agencia;
     private String conta;
     private long dataAbertura;
@@ -19,9 +18,8 @@ public class ContaCorrente {
     public ContaCorrente() {
     }
 
-    public ContaCorrente(long id, long idPessoaTitular, String agencia, String conta, long dataAbertura, boolean ativo, BigDecimal saldo) {
+    public ContaCorrente(long id, String agencia, String conta, long dataAbertura, boolean ativo, BigDecimal saldo) {
         this.id = id;
-        this.idPessoaTitular = idPessoaTitular;
         this.agencia = agencia;
         this.conta = conta;
         this.dataAbertura = dataAbertura;
@@ -35,14 +33,6 @@ public class ContaCorrente {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getIdPessoaTitular() {
-        return idPessoaTitular;
-    }
-
-    public void setIdPessoaTitular(long idPessoaTitular) {
-        this.idPessoaTitular = idPessoaTitular;
     }
 
     public String getAgencia() {
@@ -89,7 +79,6 @@ public class ContaCorrente {
     public String toString() {
         return "ContaCorrente{" +
                 "id=" + id +
-                ", idPessoaTitular=" + idPessoaTitular +
                 ", agencia='" + agencia + '\'' +
                 ", conta='" + conta + '\'' +
                 ", dataAbertura=" + dataAbertura +

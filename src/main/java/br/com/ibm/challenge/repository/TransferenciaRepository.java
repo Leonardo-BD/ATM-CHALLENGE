@@ -14,6 +14,6 @@ public interface TransferenciaRepository extends MongoRepository<Transferencia, 
     @Query(fields="{ '_id' : 1 }")
     Optional<Transferencia> findTopByOrderByIdDesc();
 
-    @Query("{ 'dataAgendamento' : 'NULL', 'executada' : false, 'cancelada' : false }")
+    @Query("{ 'dataAgendamento' : {$gt : 0}, 'executada' : false, 'cancelada' : false }")
     List<Transferencia> findTransferenciasAgendadas();
 }

@@ -1,6 +1,5 @@
 package br.com.ibm.challenge.service.rules;
 
-import br.com.ibm.challenge.domain.ContaCorrente;
 import br.com.ibm.challenge.domain.Transferencia;
 import br.com.ibm.challenge.exception.enumerator.GenericExceptionEnum;
 import br.com.ibm.challenge.exception.enumerator.TransferenciaExceptionEnum;
@@ -58,11 +57,13 @@ public class TransferenciaRules {
 
     public static boolean horarioDeTransferenciaValido() {
         ZonedDateTime dateNow = ZonedDateTime.now();
+        ZonedDateTime dataAbertura = ZonedDateTime.now().withHour(7).withMinute(30).withSecond(0).withNano(0);
+        ZonedDateTime dataFechamento = ZonedDateTime.now().withHour(22).withMinute(0).withSecond(0).withNano(0);
 
         boolean horarioValido =     (dateNow.getDayOfWeek().getValue() >= 1 &&
-                                    dateNow.getDayOfWeek().getValue() <= 6) ||
-                                    ((dateNow.getHour() >= 7 && dateNow.getMinute() >= 30) &&
-                                    dateNow.getHour() <= 22);
+                                    dateNow.getDayOfWeek().getValue() <= 5) &&
+                                    (dateNow.isAfter(dataAbertura) &&
+                                    dateNow.isBefore(dataFechamento));
 
         if (horarioValido) {
             return true;

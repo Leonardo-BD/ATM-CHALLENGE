@@ -50,6 +50,7 @@ public class SaqueService implements ISaqueService {
 
         contaCorrente = ContaCorrenteUtils.debitarConta(contaCorrente, saque.getValor());
         contaCorrenteRepository.save(contaCorrente);
+        terminalAtmRepository.save(terminalAtm);
 
         return saque;
     }

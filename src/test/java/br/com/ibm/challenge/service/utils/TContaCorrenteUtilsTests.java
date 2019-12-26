@@ -22,7 +22,7 @@ public class TContaCorrenteUtilsTests {
 
     @Before
     public void initObjects() {
-        contaCorrente = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(1).build();
+        contaCorrente = new ContaCorrenteBuilder("0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(1).build();
     }
 
     @Test

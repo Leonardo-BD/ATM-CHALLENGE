@@ -18,7 +18,7 @@ public class TSaqueUtilsTests {
     public void montarNovoSaqueTest_200() {
         Saque saque = new SaqueBuilder(1, 1, BigDecimal.ZERO).build();
         TerminalAtm terminalAtm = new TerminalAtmBuilder("Rua B, 127 - Porto Alegre, RS", true).setCedulasReal(100, 100, 100, 100, 100, 100).setId(saque.getIdTerminalAtm()).build();
-        ContaCorrente contaCorrente = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
+        ContaCorrente contaCorrente = new ContaCorrenteBuilder("0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
 
         saque = SaqueUtils.montarNovoSaque(terminalAtm, contaCorrente, BigDecimal.valueOf(200));
 
@@ -30,7 +30,7 @@ public class TSaqueUtilsTests {
     public void montarNovoSaqueTest_240() {
         Saque saque = new SaqueBuilder(1, 1, BigDecimal.ZERO).build();
         TerminalAtm terminalAtm = new TerminalAtmBuilder("Rua B, 127 - Porto Alegre, RS", true).setCedulasReal(100, 100, 100, 100, 100, 100).setId(saque.getIdTerminalAtm()).build();
-        ContaCorrente contaCorrente = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
+        ContaCorrente contaCorrente = new ContaCorrenteBuilder("0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
 
         saque = SaqueUtils.montarNovoSaque(terminalAtm, contaCorrente, BigDecimal.valueOf(240));
 
@@ -43,7 +43,7 @@ public class TSaqueUtilsTests {
     public void montarNovoSaqueTest_255() {
         Saque saque = new SaqueBuilder(1, 1, BigDecimal.ZERO).build();
         TerminalAtm terminalAtm = new TerminalAtmBuilder("Rua B, 127 - Porto Alegre, RS", true).setCedulasReal(100, 100, 100, 100, 100, 100).setId(saque.getIdTerminalAtm()).build();
-        ContaCorrente contaCorrente = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
+        ContaCorrente contaCorrente = new ContaCorrenteBuilder("0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
 
         saque = SaqueUtils.montarNovoSaque(terminalAtm, contaCorrente, BigDecimal.valueOf(255));
 
@@ -57,7 +57,7 @@ public class TSaqueUtilsTests {
     public void montarNovoSaqueTest_257() {
         Saque saque = new SaqueBuilder(1, 1, BigDecimal.ZERO).build();
         TerminalAtm terminalAtm = new TerminalAtmBuilder("Rua B, 127 - Porto Alegre, RS", true).setCedulasReal(100, 100, 100, 100, 100, 100).setId(saque.getIdTerminalAtm()).build();
-        ContaCorrente contaCorrente = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
+        ContaCorrente contaCorrente = new ContaCorrenteBuilder("0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
 
         saque = SaqueUtils.montarNovoSaque(terminalAtm, contaCorrente, BigDecimal.valueOf(257));
 
@@ -72,7 +72,7 @@ public class TSaqueUtilsTests {
     public void montarNovoSaqueTest_261() {
         Saque saque = new SaqueBuilder(1, 1, BigDecimal.ZERO).build();
         TerminalAtm terminalAtm = new TerminalAtmBuilder("Rua B, 127 - Porto Alegre, RS", true).setCedulasReal(100, 100, 100, 100, 100, 100).setId(saque.getIdTerminalAtm()).build();
-        ContaCorrente contaCorrente = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
+        ContaCorrente contaCorrente = new ContaCorrenteBuilder("0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(saque.getIdContaCorrente()).build();
 
         saque = SaqueUtils.montarNovoSaque(terminalAtm, contaCorrente, BigDecimal.valueOf(261));
 

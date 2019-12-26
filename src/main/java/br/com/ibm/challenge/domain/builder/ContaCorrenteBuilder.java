@@ -9,9 +9,8 @@ public class ContaCorrenteBuilder {
 
     private ContaCorrente contaCorrente;
 
-    public ContaCorrenteBuilder(long idPessoaTitular, String agencia, String conta, boolean ativo) {
+    public ContaCorrenteBuilder(String agencia, String conta, boolean ativo) {
         contaCorrente = new ContaCorrente();
-        contaCorrente.setIdPessoaTitular(idPessoaTitular);
         contaCorrente.setAgencia(agencia);
         contaCorrente.setConta(conta);
         contaCorrente.setAtivo(ativo);

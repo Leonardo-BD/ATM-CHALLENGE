@@ -30,38 +30,40 @@ public class TransferenciaScheduler {
 
     @Scheduled(initialDelayString = "${agendamento.transferencia.initial-delay}", fixedRateString = "${agendamento.transferencia.time-rate}")
     public void efetivarTransferenciasAgendadas() {
-        List<Transferencia> transferenciaList = transferenciaRepository.findTransferenciasAgendadas();
+        if (TransferenciaRules.horarioDeTransferenciaValido()) {
+            List<Transferencia> transferenciaList = transferenciaRepository.findTransferenciasAgendadas();
 
-        for (Transferencia transferencia : transferenciaList) {
-            try {
-                if (TransferenciaRules.transferenciaNaoExecutada(true, transferencia) && TransferenciaRules.transferenciaPorAgendamentoAutorizada(transferencia)) {
-                    ContaCorrente contaCorrenteOrigem = contaCorrenteRepository.findById(transferencia.getIdContaCorrenteOrigem()).orElse(null);
-                    ContaCorrente contaCorrenteDestino = contaCorrenteRepository.findById(transferencia.getIdContaCorrenteDestino()).orElse(null);
+            for (Transferencia transferencia : transferenciaList) {
+                try {
+                    if (TransferenciaRules.transferenciaNaoExecutada(true, transferencia) && TransferenciaRules.transferenciaPorAgendamentoAutorizada(transferencia)) {
+                        ContaCorrente contaCorrenteOrigem = contaCorrenteRepository.findById(transferencia.getIdContaCorrenteOrigem()).orElse(null);
+                        ContaCorrente contaCorrenteDestino = contaCorrenteRepository.findById(transferencia.getIdContaCorrenteDestino()).orElse(null);
 
-                    ContaCorrenteRules.contaCorrenteNotNull(true, contaCorrenteOrigem);
-                    ContaCorrenteRules.contaCorrenteNotNull(true, contaCorrenteDestino);
-                    ContaCorrenteRules.contaCorrenteAtiva(true, contaCorrenteOrigem);
-                    ContaCorrenteRules.contaCorrenteAtiva(true, contaCorrenteDestino);
-                    ContaCorrenteRules.saldoSuficienteDebito(true, contaCorrenteOrigem, transferencia.getValor());
+                        ContaCorrenteRules.contaCorrenteNotNull(true, contaCorrenteOrigem);
+                        ContaCorrenteRules.contaCorrenteNotNull(true, contaCorrenteDestino);
+                        ContaCorrenteRules.contaCorrenteAtiva(true, contaCorrenteOrigem);
+                        ContaCorrenteRules.contaCorrenteAtiva(true, contaCorrenteDestino);
+                        ContaCorrenteRules.saldoSuficienteDebito(true, contaCorrenteOrigem, transferencia.getValor());
 
-                    contaCorrenteOrigem = TransferenciaUtils.debitarCorrentista(transferencia, contaCorrenteOrigem);
-                    contaCorrenteDestino = TransferenciaUtils.creditarCorrentista(transferencia, contaCorrenteDestino);
+                        contaCorrenteOrigem = TransferenciaUtils.debitarCorrentista(transferencia, contaCorrenteOrigem);
+                        contaCorrenteDestino = TransferenciaUtils.creditarCorrentista(transferencia, contaCorrenteDestino);
 
-                    contaCorrenteRepository.save(contaCorrenteOrigem);
-                    contaCorrenteRepository.save(contaCorrenteDestino);
+                        contaCorrenteRepository.save(contaCorrenteOrigem);
+                        contaCorrenteRepository.save(contaCorrenteDestino);
 
-                    transferencia.setExecutada(true);
+                        transferencia.setExecutada(true);
+                        transferencia.setDataOperacao(ZonedDateTime.now().toEpochSecond());
+                        transferenciaRepository.save(transferencia);
+                    }
+                } catch (Exception e) {
+                    log.error(MSG_EXCEPTION, e);
+
+                    transferencia.setCancelada(true);
                     transferencia.setDataOperacao(ZonedDateTime.now().toEpochSecond());
                     transferenciaRepository.save(transferencia);
+
+                    //Em caso real, enviar e-mail ou comunicado às pessoas e serviços interessados.
                 }
-            } catch (Exception e) {
-                log.error(MSG_EXCEPTION, e);
-
-                transferencia.setCancelada(true);
-                transferencia.setDataOperacao(ZonedDateTime.now().toEpochSecond());
-                transferenciaRepository.save(transferencia);
-
-                //Em caso real, enviar e-mail ou comunicado às pessoas e serviços interessados.
             }
         }
     }

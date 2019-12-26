@@ -31,8 +31,8 @@ public class MongoInit {
         ContaCorrente ultimaContaCorrente = contaCorrenteRepository.findTopByOrderByIdDesc().orElse(null);
         long lastId = ultimaContaCorrente != null ? ultimaContaCorrente.getId() : 0;
 
-        ContaCorrente contaCorrenteOrigem = new ContaCorrenteBuilder(1, "0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(lastId+1).build();
-        ContaCorrente contaCorrenteDestino = new ContaCorrenteBuilder(2, "0050", "5670012", true).setSaldo(BigDecimal.valueOf(10000)).setId(lastId+2).build();
+        ContaCorrente contaCorrenteOrigem = new ContaCorrenteBuilder("0041", "4015871", true).setSaldo(BigDecimal.valueOf(10000)).setId(lastId+1).build();
+        ContaCorrente contaCorrenteDestino = new ContaCorrenteBuilder("0050", "5670012", true).setSaldo(BigDecimal.valueOf(10000)).setId(lastId+2).build();
 
         contaCorrenteRepository.save(contaCorrenteOrigem);
         contaCorrenteRepository.save(contaCorrenteDestino);
