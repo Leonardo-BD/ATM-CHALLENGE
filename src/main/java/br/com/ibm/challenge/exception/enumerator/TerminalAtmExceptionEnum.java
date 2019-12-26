@@ -8,7 +8,8 @@ public enum TerminalAtmExceptionEnum {
     TERMINAL_INATIVO            (new GeneralException("Operação não efetuada: o terminal está desativado.", HttpStatus.BAD_REQUEST)),
     LOCALIZACAO_NAO_CADASTRADA  (new GeneralException("Operação não efetuada: localização do terminal não pôde ser validada.", HttpStatus.INTERNAL_SERVER_ERROR)),
     TERMINAL_SEM_CEDULAS        (new GeneralException("Operação não efetuada: sem cédulas no terminal.", HttpStatus.INTERNAL_SERVER_ERROR)),
-    VALOR_INSUFICIENTE_SAQUE    (new GeneralException("Operação não efetuada: terminal sem valor suficiente para saque.", HttpStatus.INTERNAL_SERVER_ERROR));
+    VALOR_INSUFICIENTE_SAQUE    (new GeneralException("Operação não efetuada: terminal sem valor suficiente para saque.", HttpStatus.INTERNAL_SERVER_ERROR)),
+    TERMINALL_NULL              (new GeneralException("Operação não efetuada: terminal inválido.", HttpStatus.INTERNAL_SERVER_ERROR));
 
     private final GeneralException exception;
 

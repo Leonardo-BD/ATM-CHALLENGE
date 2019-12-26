@@ -25,8 +25,9 @@ url:
   api-cpf: "https://user-info.herokuapp.com/users/"
 
 agendamento:
-  initial-delay: 20000 #20 segundos
-  time-rate: 60000 #60 segundos
+  transferencia:
+    initial-delay: 20000 #20 segundos
+    time-rate: 60000 #60 segundos
 
 kafka:
   bootstrap-servers: "localhost:9092"

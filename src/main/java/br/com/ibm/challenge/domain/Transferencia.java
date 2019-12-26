@@ -20,15 +20,16 @@ public class Transferencia {
     @ApiModelProperty(hidden = true)
     private long dataOperacao;
 
-    public Transferencia() {
-    }
+    @ApiModelProperty(hidden = true)
+    private long dataAgendamento;
 
-    public Transferencia(long id, long idContaCorrenteOrigem, long idContaCorrenteDestino, BigDecimal valor, long dataOperacao) {
-        this.id = id;
-        this.idContaCorrenteOrigem = idContaCorrenteOrigem;
-        this.idContaCorrenteDestino = idContaCorrenteDestino;
-        this.valor = valor;
-        this.dataOperacao = dataOperacao;
+    @ApiModelProperty(hidden = true)
+    private boolean executada;
+
+    @ApiModelProperty(hidden = true)
+    private boolean cancelada;
+
+    public Transferencia() {
     }
 
     public long getId() {
@@ -71,6 +72,30 @@ public class Transferencia {
         this.dataOperacao = dataOperacao;
     }
 
+    public long getDataAgendamento() {
+        return dataAgendamento;
+    }
+
+    public void setDataAgendamento(long dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
+    }
+
+    public boolean isExecutada() {
+        return executada;
+    }
+
+    public void setExecutada(boolean executada) {
+        this.executada = executada;
+    }
+
+    public boolean isCancelada() {
+        return cancelada;
+    }
+
+    public void setCancelada(boolean cancelada) {
+        this.cancelada = cancelada;
+    }
+
     @Override
     public String toString() {
         return "Transferencia{" +
@@ -79,6 +104,9 @@ public class Transferencia {
                 ", idContaCorrenteDestino=" + idContaCorrenteDestino +
                 ", valor=" + valor +
                 ", dataOperacao=" + dataOperacao +
+                ", dataAgendamento=" + dataAgendamento +
+                ", executada=" + executada +
+                ", cancelada=" + cancelada +
                 '}';
     }
 }

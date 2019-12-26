@@ -47,7 +47,7 @@ public class DepositoRules {
         if (valorDeposito != null && valorDeposito.compareTo(BigDecimal.ZERO) > 0) {
             return true;
         } else {
-            return returnFalseOrException(throwException, DepositoExceptionEnum.TIPO_DEPOSITO_INVALIDO.getException());
+            return returnFalseOrException(throwException, DepositoExceptionEnum.VALOR_DEPOSITO_INVALIDO.getException());
         }
     }
 }

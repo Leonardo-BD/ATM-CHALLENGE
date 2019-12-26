@@ -1,7 +1,6 @@
 package br.com.ibm.challenge.service.rules;
 
 import br.com.ibm.challenge.domain.TerminalAtm;
-import br.com.ibm.challenge.exception.enumerator.GenericExceptionEnum;
 import br.com.ibm.challenge.exception.enumerator.TerminalAtmExceptionEnum;
 
 import java.math.BigDecimal;
@@ -14,7 +13,7 @@ public class TerminalAtmRules {
         if (terminalAtm != null) {
             return true;
         } else {
-            return returnFalseOrException(throwException, GenericExceptionEnum.ERRO_PREENCHIMENTO.getException());
+            return returnFalseOrException(throwException, TerminalAtmExceptionEnum.TERMINALL_NULL.getException());
         }
     }
 

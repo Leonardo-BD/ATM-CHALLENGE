@@ -4,5 +4,5 @@ import br.com.ibm.challenge.domain.Transferencia;
 
 public interface ITransferenciaService {
 
-    Transferencia efetuarTransferencia(short versaoApi, Transferencia transferencia, double valorTransferencia);
+    Transferencia efetuarTransferencia(short versaoApi, Transferencia transferencia);
 }

@@ -6,6 +6,7 @@ import br.com.ibm.challenge.exception.enumerator.GenericExceptionEnum;
 import br.com.ibm.challenge.exception.enumerator.TransferenciaExceptionEnum;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 
 import static br.com.ibm.challenge.exception.GeneralException.returnFalseOrException;
 
@@ -47,11 +48,34 @@ public class TransferenciaRules {
         }
     }
 
-    public static boolean remetentePossuiSaldoParaTransferencia(boolean throwException, Transferencia transferencia, ContaCorrente contaCorrenteOrigem) {
-        if (contaCorrenteOrigem.getSaldo().compareTo(transferencia.getValor()) >= 0) {
+    public static boolean transferenciaNaoExecutada(boolean throwException, Transferencia transferencia) {
+        if (!transferencia.isExecutada()) {
             return true;
         } else {
-            return returnFalseOrException(throwException, TransferenciaExceptionEnum.REMETENTE_SEM_SALDO.getException());
+            return returnFalseOrException(throwException, TransferenciaExceptionEnum.TRANSFERENCIA_JA_EXECUTADA.getException());
+        }
+    }
+
+    public static boolean horarioDeTransferenciaValido() {
+        ZonedDateTime dateNow = ZonedDateTime.now();
+
+        boolean horarioValido =     (dateNow.getDayOfWeek().getValue() >= 1 &&
+                                    dateNow.getDayOfWeek().getValue() <= 6) ||
+                                    ((dateNow.getHour() >= 7 && dateNow.getMinute() >= 30) &&
+                                    dateNow.getHour() <= 22);
+
+        if (horarioValido) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean transferenciaPorAgendamentoAutorizada(Transferencia transferencia) {
+        if (ZonedDateTime.now().toEpochSecond() >= transferencia.getDataAgendamento()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

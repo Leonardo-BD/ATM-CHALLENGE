@@ -4,5 +4,5 @@ import br.com.ibm.challenge.domain.Saque;
 
 public interface ISaqueService {
 
-    Saque sacarContaCorrenteViaAtm(short versaoApi, Saque saque, double valorSaqueDouble);
+    Saque sacarContaCorrenteViaAtm(short versaoApi, Saque saque);
 }
